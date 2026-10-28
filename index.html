@@ -1,0 +1,944 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101114">
+<title>Pondicherry Trips | Discover Your Escape</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root {
+  --bg: #101114;
+  --card: #191b20;
+  --orange: #ffa500;
+  --white: #fff;
+  --muted: #a8adba;
+  --border: rgba(255,255,255,.12);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  line-height: 1.7;
+}
+body.modal-open { overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+img { width: 100%; display: block; object-fit: cover; }
+.container { width: min(1200px, 90%); margin: auto; }
+section { scroll-margin-top: 80px; }
+.section { padding: 90px 0; }
+.kicker {
+  color: var(--orange);
+  font-size: .78rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+.section-title {
+  font: 700 clamp(2.2rem, 5vw, 3.8rem)/1.12 "Oswald", sans-serif;
+  text-transform: uppercase;
+  margin: 12px 0 18px;
+}
+.section-desc { color: var(--muted); max-width: 680px; }
+.section-heading { margin-bottom: 42px; }
+.section-heading.center { text-align: center; }
+.section-heading.center .section-desc { margin: auto; }
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 23px;
+  min-height: 48px;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: .9rem;
+  transition: .25s;
+}
+.btn:hover { transform: translateY(-3px); }
+.btn-orange { background: var(--orange); color: #151515; }
+.btn-orange:hover { background: #ffc044; }
+.btn-outline { border-color: #fff8; color: white; background: #ffffff0c; }
+.btn-outline:hover { background: #ffffff20; }
+.btn-small { min-height: 40px; padding: 9px 15px; font-size: .8rem; }
+
+/* NAVBAR */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(16,17,20,.95);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(15px);
+}
+.nav {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex-shrink: 0;
+}
+.brand i { color: var(--orange); font-size: 2rem; }
+.brand-name { font-weight: 800; letter-spacing: 1px; line-height: 1.2; }
+.brand-name small {
+  display: block;
+  color: var(--muted);
+  font-size: .58rem;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+}
+.nav-links a {
+  color: #d7d8dc;
+  font-size: .86rem;
+  font-weight: 700;
+  transition: color .2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--orange); }
+.nav-right { display: flex; align-items: center; gap: 13px; }
+.socials { display: flex; gap: 8px; }
+.socials a {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: #b9bbc3;
+}
+.socials a:hover { color: var(--orange); border-color: var(--orange); }
+.menu-toggle {
+  display: none;
+  width: 43px;
+  height: 43px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: white;
+  border-radius: 12px;
+}
+
+/* HERO */
+.hero {
+  min-height: 700px;
+  min-height: min(790px, calc(100svh - 78px));
+  display: flex;
+  align-items: center;
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.38)),
+    linear-gradient(0deg, rgba(0,0,0,.45), transparent 60%),
+    url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2000&q=85")
+    center/cover no-repeat;
+}
+.hero-content { padding: 90px 0 115px; }
+.hero .kicker { color: white; }
+.hero h1 {
+  font: 700 clamp(4rem, 10vw, 8.5rem)/.98 "Oswald", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  margin: 15px 0 22px;
+}
+.hero h1 span { color: var(--orange); }
+.hero-copy { max-width: 650px; color: #f0f0f0; font-size: 1.08rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+.hero-features { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 32px; font-size: .83rem; }
+.hero-features i { color: var(--orange); margin-right: 7px; }
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 65px;
+}
+.about-image { position: relative; min-height: 460px; }
+.about-image .main-img {
+  position: absolute;
+  inset: 0 35px 30px 0;
+  width: calc(100% - 35px);
+  height: calc(100% - 30px);
+  border-radius: 22px;
+}
+.about-image .small-img {
+  position: absolute;
+  width: 44%;
+  height: 42%;
+  right: 0;
+  bottom: 0;
+  border: 6px solid var(--bg);
+  border-radius: 20px;
+}
+.image-label {
+  position: absolute;
+  left: 20px;
+  bottom: 55px;
+  background: var(--orange);
+  color: #111;
+  padding: 13px 18px;
+  border-radius: 12px;
+  font-weight: 800;
+}
+.about-content p { color: var(--muted); margin-bottom: 16px; }
+.about-content strong { color: var(--orange); }
+.about-points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 17px;
+  margin: 25px 0;
+}
+.about-point { display: flex; align-items: center; gap: 11px; font-weight: 700; font-size: .88rem; }
+.point-icon {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: #29251d;
+  color: var(--orange);
+  border-radius: 13px;
+}
+
+/* STATS */
+.stats { background: #181a1f; border-block: 1px solid var(--border); padding: 30px 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat { text-align: center; padding: 12px; border-right: 1px solid var(--border); }
+.stat:last-child { border: 0; }
+.stat strong { color: var(--orange); font: 700 clamp(2rem, 4vw, 3rem) "Oswald", sans-serif; display: block; }
+.stat span { color: var(--muted); font-size: .82rem; }
+
+/* EXPERIENCES */
+.experiences { background: #15161a; }
+.experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.experience-card {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  background: linear-gradient(140deg, #202228, #17181c);
+  transition: .25s;
+}
+.experience-card:hover { transform: translateY(-5px); border-color: #ffa50088; }
+.experience-card .point-icon { width: 53px; height: 53px; margin-bottom: 18px; font-size: 1.2rem; }
+.experience-card h3 { margin-bottom: 8px; }
+.experience-card p { color: var(--muted); font-size: .9rem; }
+
+/* PACKAGES */
+.package-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.package-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--card);
+  transition: .25s;
+}
+.package-card:hover { transform: translateY(-5px); box-shadow: 0 20px 45px #0005; }
+.package-image { height: 225px; position: relative; overflow: hidden; }
+.package-image img { height: 100%; transition: transform .4s; }
+.package-card:hover .package-image img { transform: scale(1.06); }
+.package-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 6px 12px;
+  background: var(--orange);
+  color: #111;
+  border-radius: 50px;
+  font-size: .72rem;
+  font-weight: 800;
+}
+.package-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+.package-meta { display: flex; gap: 15px; flex-wrap: wrap; color: var(--muted); font-size: .78rem; }
+.package-meta i { color: var(--orange); }
+.package-body h3 { font-size: 1.35rem; margin: 12px 0 8px; }
+.package-body p { color: var(--muted); font-size: .88rem; margin-bottom: 17px; }
+.package-features { list-style: none; margin-bottom: 22px; }
+.package-features li { color: #ddd; font-size: .82rem; margin: 7px 0; }
+.package-features i { color: var(--orange); margin-right: 7px; }
+.package-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid var(--border);
+  padding-top: 17px;
+  margin-top: auto;
+}
+.price { font-weight: 800; font-size: 1.25rem; white-space: nowrap; }
+.price small { display: block; color: var(--muted); font-size: .67rem; font-weight: 400; }
+
+/* HOW IT WORKS */
+.steps { background: #181a1f; }
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; counter-reset: step; }
+.step-card { padding: 26px; background: var(--card); border-top: 2px solid var(--orange); border-radius: 0 0 16px 16px; }
+.step-card::before {
+  counter-increment: step;
+  content: "0" counter(step);
+  color: var(--orange);
+  font: 700 2.4rem "Oswald", sans-serif;
+}
+.step-card h3 { margin: 12px 0 8px; }
+.step-card p { color: var(--muted); font-size: .88rem; }
+
+/* CALL TO ACTION */
+.cta { padding: 75px 0; }
+.cta-panel {
+  padding: clamp(30px, 5vw, 60px);
+  border-radius: 25px;
+  background: var(--orange);
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+.cta-panel .kicker { color: #34260a; }
+.cta-panel h2 { font: 700 clamp(2rem, 4vw, 3.3rem)/1.1 "Oswald", sans-serif; text-transform: uppercase; margin: 12px 0; }
+.cta-panel p { color: #4a3612; max-width: 650px; }
+.cta-panel .btn { background: #111; color: white; flex-shrink: 0; }
+
+/* FOOTER */
+.footer { background: #090a0c; border-top: 1px solid var(--border); padding: 48px 0 20px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 30px; padding-bottom: 35px; }
+.footer-about p { color: var(--muted); font-size: .85rem; margin-top: 18px; max-width: 330px; }
+.footer h3 { margin-bottom: 14px; font-size: .95rem; }
+.footer ul { list-style: none; }
+.footer li { margin: 9px 0; }
+.footer li a, .footer li span { color: var(--muted); font-size: .84rem; }
+.footer li a:hover { color: var(--orange); }
+.footer-bottom { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--border); padding-top: 18px; color: #858994; font-size: .78rem; }
+
+/* BOOKING MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background: #000c;
+  backdrop-filter: blur(7px);
+}
+.modal.open { display: flex; }
+.modal-panel {
+  position: relative;
+  width: min(560px, 100%);
+  max-height: 92svh;
+  overflow-y: auto;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: #191a1f;
+  box-shadow: 0 25px 80px #0009;
+}
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  background: #282a30;
+  color: white;
+  border: 1px solid var(--border);
+}
+.modal-panel h2 { font: 700 2.1rem "Oswald", sans-serif; text-transform: uppercase; margin: 8px 40px 5px 0; }
+.modal-panel > p { color: var(--muted); font-size: .88rem; margin-bottom: 22px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+.form-group { margin-bottom: 14px; min-width: 0; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label { display: block; margin-bottom: 6px; font-size: .82rem; font-weight: 700; }
+.form-group input, .form-group select {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  background: #101114;
+  color: white;
+  border: 1px solid #3a3c44;
+  border-radius: 10px;
+}
+.form-group input:focus, .form-group select:focus { outline: 2px solid var(--orange); border-color: transparent; }
+.form-group input[readonly] { color: var(--orange); }
+.form-error { color: #ff9292; font-size: .82rem; min-height: 22px; }
+.submit-btn { width: 100%; border: 0; }
+.success {
+  display: none;
+  margin-top: 18px;
+  padding: 17px;
+  border: 1px solid #54bf7b66;
+  border-radius: 13px;
+  background: #235b3533;
+}
+.success.show { display: block; }
+.success h3 { color: #80e5a0; font-size: 1rem; }
+.success p { color: #d8e9dd; font-size: .85rem; margin-top: 7px; overflow-wrap: anywhere; }
+.demo-note { color: #898e98; font-size: .72rem; margin-top: 12px; }
+
+@media (max-width: 1050px) {
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: .78rem; }
+  .socials { display: none; }
+  .about-grid { gap: 35px; }
+  .package-grid { grid-template-columns: repeat(2, 1fr); }
+  .package-card:last-child { grid-column: 1 / -1; width: calc(50% - 11px); justify-self: center; }
+  .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+  .footer-grid > div:last-child { grid-column: 2 / 4; }
+}
+@media (max-width: 760px) {
+  .container { width: 90%; }
+  .section { padding: 70px 0; }
+  .nav { min-height: 70px; }
+  .brand-name { font-size: .88rem; }
+  .brand-name small { font-size: .52rem; }
+  .nav-right > .btn { display: none; }
+  .menu-toggle { display: grid; place-items: center; font-size: 1.1rem; }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px 5% 18px;
+    background: #111216;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { display: block; padding: 12px; font-size: .93rem; border-radius: 8px; }
+  .nav-links a:hover { background: #25262c; }
+  .hero { min-height: 690px; min-height: min(760px, calc(100svh - 70px)); background-position: 58% center; }
+  .hero-content { padding: 70px 0 90px; }
+  .hero h1 { font-size: clamp(4rem, 14vw, 6.5rem); }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-image { min-height: 400px; }
+  .experience-grid { grid-template-columns: 1fr 1fr; }
+  .experience-card:last-child { grid-column: 1 / -1; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .cta-panel { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 560px) {
+  .section { padding: 58px 0; }
+  .hero { min-height: 680px; }
+  .hero h1 { font-size: clamp(3.6rem, 16vw, 5.2rem); }
+  .hero-copy { font-size: .95rem; }
+  .hero-actions { flex-direction: column; align-items: stretch; max-width: 310px; }
+  .hero-features { flex-direction: column; gap: 9px; }
+  .about-image { min-height: 320px; }
+  .about-points { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stat { border-right: 1px solid var(--border); padding: 15px 5px; }
+  .stat:nth-child(2) { border-right: 0; }
+  .stat:nth-child(3), .stat:nth-child(4) { border-top: 1px solid var(--border); }
+  .stat strong { font-size: 2rem; }
+  .stat span { font-size: .72rem; }
+  .experience-grid, .package-grid { grid-template-columns: 1fr; }
+  .experience-card:last-child, .package-card:last-child { grid-column: auto; width: 100%; }
+  .package-image { height: 220px; }
+  .package-body { padding: 19px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 25px 15px; }
+  .footer-about { grid-column: 1 / -1; }
+  .footer-grid > div:last-child { grid-column: auto; }
+  .footer-bottom { flex-direction: column; gap: 7px; }
+  .form-grid { grid-template-columns: 1fr; gap: 0; }
+  .form-group.full { grid-column: auto; }
+  .modal { padding: 9px; }
+  .modal-panel { padding: 25px 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
+</style>
+</head>
+
+<body>
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="Pondicherry Trips home">
+      <i class="fa-solid fa-mountain-sun"></i>
+      <span class="brand-name">PONDICHERRY TRIPS
+        <small>EXPLORE • EXPERIENCE • ESCAPE</small>
+      </span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About us</a></li>
+        <li><a href="#experiences">Adventures</a></li>
+        <li><a href="#milestones">Milestones</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-right">
+      <div class="socials">
+        <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://youtube.com/" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+      <button class="btn btn-orange" type="button" data-book="Custom Pondicherry Trip">Book Now <i class="fa-solid fa-arrow-right"></i></button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <p class="kicker">Your next adventure begins here</p>
+      <h1>Discover<br><span>Pondicherry</span></h1>
+      <p class="hero-copy">
+        Explore beautiful beaches, colourful heritage streets, peaceful nature
+        escapes and unforgettable coastal experiences. Your next story starts here.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-orange" type="button" data-book="Pondicherry Discovery Tour">Book a Tour <i class="fa-solid fa-arrow-right"></i></button>
+        <a class="btn btn-outline" href="#about">Discover More <i class="fa-solid fa-compass"></i></a>
+      </div>
+      <div class="hero-features">
+        <span><i class="fa-solid fa-location-dot"></i>Pondicherry, India</span>
+        <span><i class="fa-solid fa-people-group"></i>Friends, couples & families</span>
+        <span><i class="fa-solid fa-camera"></i>Memories worth sharing</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container about-grid">
+      <div class="about-image">
+        <img class="main-img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1100&q=85" alt="Beautiful beach and blue ocean" loading="lazy">
+        <img class="small-img" src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=600&q=85" alt="Historic architecture" loading="lazy">
+        <div class="image-label">One trip. Many memories.</div>
+      </div>
+      <div class="about-content">
+        <span class="kicker">Who we are</span>
+        <h2 class="section-title">A little escape from the everyday.</h2>
+        <p>Pondicherry, also known as Puducherry, is a coastal destination famous for its promenade, beaches, French Quarter, cafés and relaxed atmosphere.</p>
+        <p><strong>Pondicherry Trips</strong> is a travel website concept that helps visitors discover experiences around the city. Visitors can explore sample packages, compare trip ideas and send a booking request through a simple form.</p>
+        <div class="about-points">
+          <div class="about-point"><span class="point-icon"><i class="fa-solid fa-umbrella-beach"></i></span>Beach getaways</div>
+          <div class="about-point"><span class="point-icon"><i class="fa-solid fa-landmark"></i></span>Heritage discoveries</div>
+          <div class="about-point"><span class="point-icon"><i class="fa-solid fa-bicycle"></i></span>Scenic cycling</div>
+          <div class="about-point"><span class="point-icon"><i class="fa-solid fa-leaf"></i></span>Nature experiences</div>
+        </div>
+        <a href="#experiences" class="btn btn-orange">Explore adventures <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats" id="milestones">
+    <div class="container stats-grid">
+      <div class="stat"><strong>4+</strong><span>Experience categories</span></div>
+      <div class="stat"><strong>365</strong><span>Days to explore</span></div>
+      <div class="stat"><strong>1</strong><span>Beautiful coastline</span></div>
+      <div class="stat"><strong>100%</strong><span>Made for discovery</span></div>
+    </div>
+  </section>
+
+  <section class="section experiences" id="experiences">
+    <div class="container">
+      <div class="section-heading center">
+        <span class="kicker">Choose your adventure</span>
+        <h2 class="section-title">Make every moment count</h2>
+        <p class="section-desc">Whether you want to relax beside the sea or discover the city's history, choose an experience that matches your travel mood.</p>
+      </div>
+      <div class="experience-grid">
+        <article class="experience-card">
+          <span class="point-icon"><i class="fa-solid fa-water"></i></span>
+          <h3>Beach & Boating</h3>
+          <p>Enjoy coastal views, sea breezes and relaxing time around selected beach areas. Water activities depend on local conditions and availability.</p>
+        </article>
+        <article class="experience-card">
+          <span class="point-icon"><i class="fa-solid fa-bicycle"></i></span>
+          <h3>Scenic Cycling</h3>
+          <p>Explore peaceful streets and coastal routes at a relaxed pace, with time to stop for photos and local cafés.</p>
+        </article>
+        <article class="experience-card">
+          <span class="point-icon"><i class="fa-solid fa-compass"></i></span>
+          <h3>Heritage Walks</h3>
+          <p>Discover colourful buildings, historic lanes, local architecture and the distinctive character of the French Quarter.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="packages">
+    <div class="container">
+      <div class="section-heading center">
+        <span class="kicker">Explore our packages</span>
+        <h2 class="section-title">Find your perfect trip</h2>
+        <p class="section-desc">Choose a sample package and submit your travel preferences. Prices are examples for this frontend project, not live offers.</p>
+      </div>
+
+      <div class="package-grid">
+        <article class="package-card">
+          <div class="package-image">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85" alt="Sunny beach and blue water" loading="lazy">
+            <span class="package-tag">Coastal favourite</span>
+          </div>
+          <div class="package-body">
+            <div class="package-meta"><span><i class="fa-regular fa-clock"></i> 1 day</span><span><i class="fa-solid fa-location-dot"></i> Coast</span></div>
+            <h3>Beach Bliss Escape</h3>
+            <p>Enjoy seaside views, relaxing beach time and opportunities to capture the beauty of the coastline.</p>
+            <ul class="package-features">
+              <li><i class="fa-solid fa-check"></i> Coastal sightseeing plan</li>
+              <li><i class="fa-solid fa-check"></i> Suggested photo stops</li>
+              <li><i class="fa-solid fa-check"></i> Flexible group selection</li>
+            </ul>
+            <div class="package-bottom">
+              <div class="price">₹1,499<small>Sample price / person</small></div>
+              <button class="btn btn-orange btn-small" type="button" data-book="Beach Bliss Escape">Book now <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card">
+          <div class="package-image">
+            <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=85" alt="Beautiful heritage architecture" loading="lazy">
+            <span class="package-tag">Culture & history</span>
+          </div>
+          <div class="package-body">
+            <div class="package-meta"><span><i class="fa-regular fa-clock"></i> Half day</span><span><i class="fa-solid fa-location-dot"></i> White Town</span></div>
+            <h3>Heritage & Café Trail</h3>
+            <p>Walk through photogenic streets, admire heritage architecture and explore the city's café culture.</p>
+            <ul class="package-features">
+              <li><i class="fa-solid fa-check"></i> Heritage area highlights</li>
+              <li><i class="fa-solid fa-check"></i> Café and street exploration</li>
+              <li><i class="fa-solid fa-check"></i> Photography opportunities</li>
+            </ul>
+            <div class="package-bottom">
+              <div class="price">₹1,999<small>Sample price / person</small></div>
+              <button class="btn btn-orange btn-small" type="button" data-book="Heritage & Café Trail">Book now <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card">
+          <div class="package-image">
+            <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85" alt="Peaceful lake and green landscape" loading="lazy">
+            <span class="package-tag">Nature & calm</span>
+          </div>
+          <div class="package-body">
+            <div class="package-meta"><span><i class="fa-regular fa-clock"></i> Flexible</span><span><i class="fa-solid fa-location-dot"></i> Nature spots</span></div>
+            <h3>Nature & Slow Travel</h3>
+            <p>Take a quieter route through scenic surroundings, enjoy open views and relax away from busy streets.</p>
+            <ul class="package-features">
+              <li><i class="fa-solid fa-check"></i> Nature-focused itinerary</li>
+              <li><i class="fa-solid fa-check"></i> Relaxed sightseeing pace</li>
+              <li><i class="fa-solid fa-check"></i> Seasonal location options</li>
+            </ul>
+            <div class="package-bottom">
+              <div class="price">₹2,499<small>Sample price / person</small></div>
+              <button class="btn btn-orange btn-small" type="button" data-book="Nature & Slow Travel">Book now <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section steps">
+    <div class="container">
+      <div class="section-heading center">
+        <span class="kicker">Easy booking process</span>
+        <h2 class="section-title">How it works</h2>
+        <p class="section-desc">A simple visitor journey from exploring the packages to seeing a booking confirmation.</p>
+      </div>
+      <div class="steps-grid">
+        <article class="step-card">
+          <h3>Choose an experience</h3>
+          <p>Browse the packages and select the trip that matches your interests and travel plans.</p>
+        </article>
+        <article class="step-card">
+          <h3>Share your details</h3>
+          <p>Enter your name, email, phone number, travel date and number of travellers.</p>
+        </article>
+        <article class="step-card">
+          <h3>Get confirmation</h3>
+          <p>Submit the form to see a confirmation message and reference number in this demo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="container">
+      <div class="cta-panel">
+        <div>
+          <span class="kicker">Your next story awaits</span>
+          <h2>Ready to explore Pondicherry?</h2>
+          <p>Choose an experience, pick your date and start planning your next coastal escape.</p>
+        </div>
+        <button class="btn" type="button" data-book="Custom Pondicherry Trip">Book your trip <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="#home">
+          <i class="fa-solid fa-mountain-sun"></i>
+          <span class="brand-name">PONDICHERRY TRIPS<small>EXPLORE • EXPERIENCE • ESCAPE</small></span>
+        </a>
+        <p>A travel website concept celebrating Pondicherry's coast, culture, heritage and nature. Discover a new way to plan your next escape.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#experiences">Adventures</a></li>
+          <li><a href="#milestones">Milestones</a></li>
+          <li><a href="#packages">Packages</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Experiences</h3>
+        <ul>
+          <li><a href="#packages">Beach escapes</a></li>
+          <li><a href="#packages">Heritage trails</a></li>
+          <li><a href="#packages">Nature trips</a></li>
+          <li><a href="#packages">Custom trips</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><span><i class="fa-solid fa-location-dot orange"></i> Pondicherry, India</span></li>
+          <li><a href="mailto:hello@example.com"><i class="fa-regular fa-envelope orange"></i> Email enquiries</a></li>
+          <li><button class="btn btn-orange btn-small" type="button" data-book="Custom Pondicherry Trip">Book Now</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Pondicherry Trips. Frontend project.</p>
+      <p>Built for discovery, designed for every screen.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- BOOKING FORM -->
+<div class="modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Close booking form"><i class="fa-solid fa-xmark"></i></button>
+    <span class="kicker">Let's plan your escape</span>
+    <h2 id="modalTitle">Book your trip</h2>
+    <p>Enter your travel details below to submit your booking request.</p>
+
+    <form id="bookingForm" novalidate>
+      <div class="form-group full">
+        <label for="packageName">Selected package</label>
+        <input id="packageName" name="packageName" readonly required>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="fullName">Full name *</label>
+          <input id="fullName" name="fullName" placeholder="Your full name" minlength="2" autocomplete="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address *</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone number *</label>
+          <input id="phone" name="phone" type="tel" placeholder="10-digit number" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" autocomplete="tel" required>
+        </div>
+        <div class="form-group">
+          <label for="travelDate">Travel date *</label>
+          <input id="travelDate" name="travelDate" type="date" required>
+        </div>
+        <div class="form-group">
+          <label for="travellers">Travellers *</label>
+          <select id="travellers" name="travellers" required>
+            <option value="1">1 traveller</option>
+            <option value="2" selected>2 travellers</option>
+            <option value="3">3 travellers</option>
+            <option value="4">4 travellers</option>
+            <option value="5">5 travellers</option>
+            <option value="6 or more">6 or more</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tripType">Trip style</label>
+          <select id="tripType" name="tripType">
+            <option>Friends</option>
+            <option>Couple</option>
+            <option>Family</option>
+            <option>Solo</option>
+            <option>Group</option>
+          </select>
+        </div>
+      </div>
+      <p class="form-error" id="formError" role="alert" aria-live="polite"></p>
+      <button class="btn btn-orange submit-btn" type="submit">Confirm booking <i class="fa-solid fa-check"></i></button>
+      <div class="success" id="successMessage" role="status" aria-live="polite">
+        <h3><i class="fa-solid fa-circle-check"></i> Booking submitted successfully!</h3>
+        <p id="successDetails"></p>
+      </div>
+      <p class="demo-note">Demo only: no real reservation or payment is made. Booking details are not sent to a server or saved permanently.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+const menuIcon = menuToggle.querySelector("i");
+
+function toggleMenu(open) {
+  navLinks.classList.toggle("open", open);
+  menuToggle.setAttribute("aria-expanded", String(open));
+  menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  menuIcon.classList.toggle("fa-bars", !open);
+  menuIcon.classList.toggle("fa-xmark", open);
+}
+
+menuToggle.addEventListener("click", () => {
+  toggleMenu(menuToggle.getAttribute("aria-expanded") !== "true");
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => toggleMenu(false));
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Highlight the navigation link for the section currently being viewed.
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      navLinks.querySelectorAll("a").forEach(link => {
+        link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+      });
+    });
+  }, { rootMargin: "-35% 0px -55% 0px" });
+
+  document.querySelectorAll("main section[id]").forEach(section => observer.observe(section));
+}
+
+// Booking modal controls.
+const modal = document.getElementById("bookingModal");
+const modalClose = document.getElementById("modalClose");
+const bookingForm = document.getElementById("bookingForm");
+const packageName = document.getElementById("packageName");
+const travelDate = document.getElementById("travelDate");
+const formError = document.getElementById("formError");
+const successMessage = document.getElementById("successMessage");
+const successDetails = document.getElementById("successDetails");
+let previousFocus = null;
+
+// Set today's local date as the earliest allowed travel date.
+function getLocalDate() {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+travelDate.min = getLocalDate();
+
+function openBooking(selectedPackage) {
+  previousFocus = document.activeElement;
+  packageName.value = selectedPackage;
+  formError.textContent = "";
+  successMessage.classList.remove("show");
+  successDetails.textContent = "";
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  document.getElementById("fullName").focus();
+}
+
+function closeBooking() {
+  if (!modal.classList.contains("open")) return;
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  if (previousFocus) previousFocus.focus();
+}
+
+document.querySelectorAll("[data-book]").forEach(button => {
+  button.addEventListener("click", () => openBooking(button.dataset.book));
+});
+
+modalClose.addEventListener("click", closeBooking);
+
+modal.addEventListener("click", event => {
+  if (event.target === modal) closeBooking();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    closeBooking();
+    toggleMenu(false);
+  }
+});
+
+// Validate form and display a confirmation message.
+bookingForm.addEventListener("submit", event => {
+  event.preventDefault();
+  formError.textContent = "";
+  successMessage.classList.remove("show");
+
+  if (!bookingForm.checkValidity()) {
+    formError.textContent = "Please enter valid details in all required fields.";
+    const invalidField = bookingForm.querySelector(":invalid");
+    if (invalidField) {
+      invalidField.focus();
+      invalidField.reportValidity();
+    }
+    return;
+  }
+
+  if (travelDate.value < getLocalDate()) {
+    formError.textContent = "Please select today or a future travel date.";
+    travelDate.focus();
+    return;
+  }
+
+  const name = document.getElementById("fullName").value.trim();
+  const date = travelDate.value;
+  const travellers = document.getElementById("travellers").value;
+  const tripType = document.getElementById("tripType").value;
+  const reference = "PT" + Date.now().toString().slice(-8);
+
+  successDetails.textContent =
+    `Thank you, ${name}! Your ${packageName.value} booking request is confirmed in this demo for ${date}. Travellers: ${travellers}. Trip style: ${tripType}. Reference: ${reference}. No real reservation has been made.`;
+
+  successMessage.classList.add("show");
+  successMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
+});
+</script>
+</body>
+</html>
