@@ -20,15 +20,23 @@
   --muted: #a8adba;
   --border: rgba(255,255,255,.12);
 }
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
 body {
   font-family: "DM Sans", sans-serif;
   background: var(--bg);
   color: var(--white);
   line-height: 1.7;
 }
+
 body.modal-open { overflow: hidden; }
+
 a { color: inherit; text-decoration: none; }
 button, input, select { font: inherit; }
 button { cursor: pointer; }
@@ -36,6 +44,7 @@ img { width: 100%; display: block; object-fit: cover; }
 .container { width: min(1200px, 90%); margin: auto; }
 section { scroll-margin-top: 80px; }
 .section { padding: 90px 0; }
+
 .kicker {
   color: var(--orange);
   font-size: .78rem;
@@ -43,11 +52,13 @@ section { scroll-margin-top: 80px; }
   text-transform: uppercase;
   font-weight: 800;
 }
+
 .section-title {
   font: 700 clamp(2.2rem, 5vw, 3.8rem)/1.12 "Oswald", sans-serif;
   text-transform: uppercase;
   margin: 12px 0 18px;
 }
+
 .section-desc { color: var(--muted); max-width: 680px; }
 .section-heading { margin-bottom: 42px; }
 .section-heading.center { text-align: center; }
@@ -66,6 +77,7 @@ section { scroll-margin-top: 80px; }
   font-size: .9rem;
   transition: .25s;
 }
+
 .btn:hover { transform: translateY(-3px); }
 .btn-orange { background: var(--orange); color: #151515; }
 .btn-orange:hover { background: #ffc044; }
@@ -82,6 +94,7 @@ section { scroll-margin-top: 80px; }
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(15px);
 }
+
 .nav {
   min-height: 78px;
   display: flex;
@@ -89,14 +102,17 @@ section { scroll-margin-top: 80px; }
   justify-content: space-between;
   gap: 20px;
 }
+
 .brand {
   display: flex;
   align-items: center;
   gap: 11px;
   flex-shrink: 0;
 }
+
 .brand i { color: var(--orange); font-size: 2rem; }
 .brand-name { font-weight: 800; letter-spacing: 1px; line-height: 1.2; }
+
 .brand-name small {
   display: block;
   color: var(--muted);
@@ -104,21 +120,27 @@ section { scroll-margin-top: 80px; }
   letter-spacing: 2px;
   margin-top: 4px;
 }
+
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 20px;
   list-style: none;
 }
+
 .nav-links a {
   color: #d7d8dc;
-  font-size: .86rem;
+  font-size: .84rem;
   font-weight: 700;
   transition: color .2s;
 }
-.nav-links a:hover, .nav-links a.active { color: var(--orange); }
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--orange); }
+
 .nav-right { display: flex; align-items: center; gap: 13px; }
 .socials { display: flex; gap: 8px; }
+
 .socials a {
   width: 35px;
   height: 35px;
@@ -128,7 +150,9 @@ section { scroll-margin-top: 80px; }
   border-radius: 50%;
   color: #b9bbc3;
 }
+
 .socials a:hover { color: var(--orange); border-color: var(--orange); }
+
 .menu-toggle {
   display: none;
   width: 43px;
@@ -141,7 +165,6 @@ section { scroll-margin-top: 80px; }
 
 /* HERO */
 .hero {
-  min-height: 700px;
   min-height: min(790px, calc(100svh - 78px));
   display: flex;
   align-items: center;
@@ -153,14 +176,17 @@ section { scroll-margin-top: 80px; }
     url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2000&q=85")
     center/cover no-repeat;
 }
+
 .hero-content { padding: 90px 0 115px; }
 .hero .kicker { color: white; }
+
 .hero h1 {
   font: 700 clamp(4rem, 10vw, 8.5rem)/.98 "Oswald", sans-serif;
   text-transform: uppercase;
   letter-spacing: -2px;
   margin: 15px 0 22px;
 }
+
 .hero h1 span { color: var(--orange); }
 .hero-copy { max-width: 650px; color: #f0f0f0; font-size: 1.08rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
@@ -174,7 +200,9 @@ section { scroll-margin-top: 80px; }
   align-items: center;
   gap: 65px;
 }
+
 .about-image { position: relative; min-height: 460px; }
+
 .about-image .main-img {
   position: absolute;
   inset: 0 35px 30px 0;
@@ -182,15 +210,7 @@ section { scroll-margin-top: 80px; }
   height: calc(100% - 30px);
   border-radius: 22px;
 }
-.about-image .small-img {
-  position: absolute;
-  width: 44%;
-  height: 42%;
-  right: 0;
-  bottom: 0;
-  border: 6px solid var(--bg);
-  border-radius: 20px;
-}
+
 .image-label {
   position: absolute;
   left: 20px;
@@ -201,15 +221,25 @@ section { scroll-margin-top: 80px; }
   border-radius: 12px;
   font-weight: 800;
 }
+
 .about-content p { color: var(--muted); margin-bottom: 16px; }
 .about-content strong { color: var(--orange); }
+
 .about-points {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 17px;
   margin: 25px 0;
 }
-.about-point { display: flex; align-items: center; gap: 11px; font-weight: 700; font-size: .88rem; }
+
+.about-point {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 700;
+  font-size: .88rem;
+}
+
 .point-icon {
   width: 43px;
   height: 43px;
@@ -222,16 +252,34 @@ section { scroll-margin-top: 80px; }
 }
 
 /* STATS */
-.stats { background: #181a1f; border-block: 1px solid var(--border); padding: 30px 0; }
+.stats {
+  background: #181a1f;
+  border-block: 1px solid var(--border);
+  padding: 30px 0;
+}
+
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-.stat { text-align: center; padding: 12px; border-right: 1px solid var(--border); }
+
+.stat {
+  text-align: center;
+  padding: 12px;
+  border-right: 1px solid var(--border);
+}
+
 .stat:last-child { border: 0; }
-.stat strong { color: var(--orange); font: 700 clamp(2rem, 4vw, 3rem) "Oswald", sans-serif; display: block; }
+
+.stat strong {
+  color: var(--orange);
+  font: 700 clamp(2rem, 4vw, 3rem) "Oswald", sans-serif;
+  display: block;
+}
+
 .stat span { color: var(--muted); font-size: .82rem; }
 
 /* EXPERIENCES */
 .experiences { background: #15161a; }
 .experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
 .experience-card {
   padding: 28px;
   border: 1px solid var(--border);
@@ -239,6 +287,7 @@ section { scroll-margin-top: 80px; }
   background: linear-gradient(140deg, #202228, #17181c);
   transition: .25s;
 }
+
 .experience-card:hover { transform: translateY(-5px); border-color: #ffa50088; }
 .experience-card .point-icon { width: 53px; height: 53px; margin-bottom: 18px; font-size: 1.2rem; }
 .experience-card h3 { margin-bottom: 8px; }
@@ -246,6 +295,7 @@ section { scroll-margin-top: 80px; }
 
 /* PACKAGES */
 .package-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
 .package-card {
   display: flex;
   flex-direction: column;
@@ -255,10 +305,12 @@ section { scroll-margin-top: 80px; }
   background: var(--card);
   transition: .25s;
 }
+
 .package-card:hover { transform: translateY(-5px); box-shadow: 0 20px 45px #0005; }
 .package-image { height: 225px; position: relative; overflow: hidden; }
 .package-image img { height: 100%; transition: transform .4s; }
 .package-card:hover .package-image img { transform: scale(1.06); }
+
 .package-tag {
   position: absolute;
   top: 14px;
@@ -270,6 +322,7 @@ section { scroll-margin-top: 80px; }
   font-size: .72rem;
   font-weight: 800;
 }
+
 .package-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
 .package-meta { display: flex; gap: 15px; flex-wrap: wrap; color: var(--muted); font-size: .78rem; }
 .package-meta i { color: var(--orange); }
@@ -278,6 +331,7 @@ section { scroll-margin-top: 80px; }
 .package-features { list-style: none; margin-bottom: 22px; }
 .package-features li { color: #ddd; font-size: .82rem; margin: 7px 0; }
 .package-features i { color: var(--orange); margin-right: 7px; }
+
 .package-bottom {
   display: flex;
   align-items: center;
@@ -287,24 +341,34 @@ section { scroll-margin-top: 80px; }
   padding-top: 17px;
   margin-top: auto;
 }
+
 .price { font-weight: 800; font-size: 1.25rem; white-space: nowrap; }
 .price small { display: block; color: var(--muted); font-size: .67rem; font-weight: 400; }
 
 /* HOW IT WORKS */
 .steps { background: #181a1f; }
 .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; counter-reset: step; }
-.step-card { padding: 26px; background: var(--card); border-top: 2px solid var(--orange); border-radius: 0 0 16px 16px; }
+
+.step-card {
+  padding: 26px;
+  background: var(--card);
+  border-top: 2px solid var(--orange);
+  border-radius: 0 0 16px 16px;
+}
+
 .step-card::before {
   counter-increment: step;
   content: "0" counter(step);
   color: var(--orange);
   font: 700 2.4rem "Oswald", sans-serif;
 }
+
 .step-card h3 { margin: 12px 0 8px; }
 .step-card p { color: var(--muted); font-size: .88rem; }
 
-/* CALL TO ACTION */
+/* CTA */
 .cta { padding: 75px 0; }
+
 .cta-panel {
   padding: clamp(30px, 5vw, 60px);
   border-radius: 25px;
@@ -315,6 +379,7 @@ section { scroll-margin-top: 80px; }
   justify-content: space-between;
   gap: 25px;
 }
+
 .cta-panel .kicker { color: #34260a; }
 .cta-panel h2 { font: 700 clamp(2rem, 4vw, 3.3rem)/1.1 "Oswald", sans-serif; text-transform: uppercase; margin: 12px 0; }
 .cta-panel p { color: #4a3612; max-width: 650px; }
@@ -330,6 +395,7 @@ section { scroll-margin-top: 80px; }
 .footer li a, .footer li span { color: var(--muted); font-size: .84rem; }
 .footer li a:hover { color: var(--orange); }
 .footer-bottom { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--border); padding-top: 18px; color: #858994; font-size: .78rem; }
+.orange { color: var(--orange); }
 
 /* BOOKING MODAL */
 .modal {
@@ -343,7 +409,9 @@ section { scroll-margin-top: 80px; }
   background: #000c;
   backdrop-filter: blur(7px);
 }
+
 .modal.open { display: flex; }
+
 .modal-panel {
   position: relative;
   width: min(560px, 100%);
@@ -355,6 +423,7 @@ section { scroll-margin-top: 80px; }
   background: #191a1f;
   box-shadow: 0 25px 80px #0009;
 }
+
 .modal-close {
   position: absolute;
   top: 14px;
@@ -366,13 +435,16 @@ section { scroll-margin-top: 80px; }
   color: white;
   border: 1px solid var(--border);
 }
+
 .modal-panel h2 { font: 700 2.1rem "Oswald", sans-serif; text-transform: uppercase; margin: 8px 40px 5px 0; }
 .modal-panel > p { color: var(--muted); font-size: .88rem; margin-bottom: 22px; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
 .form-group { margin-bottom: 14px; min-width: 0; }
 .form-group.full { grid-column: 1 / -1; }
 .form-group label { display: block; margin-bottom: 6px; font-size: .82rem; font-weight: 700; }
-.form-group input, .form-group select {
+
+.form-group input,
+.form-group select {
   width: 100%;
   min-height: 46px;
   padding: 10px 12px;
@@ -381,10 +453,18 @@ section { scroll-margin-top: 80px; }
   border: 1px solid #3a3c44;
   border-radius: 10px;
 }
-.form-group input:focus, .form-group select:focus { outline: 2px solid var(--orange); border-color: transparent; }
+
+.form-group input:focus,
+.form-group select:focus,
+#otpInput:focus {
+  outline: 2px solid var(--orange);
+  border-color: transparent;
+}
+
 .form-group input[readonly] { color: var(--orange); }
 .form-error { color: #ff9292; font-size: .82rem; min-height: 22px; }
 .submit-btn { width: 100%; border: 0; }
+
 .success {
   display: none;
   margin-top: 18px;
@@ -392,15 +472,43 @@ section { scroll-margin-top: 80px; }
   border: 1px solid #54bf7b66;
   border-radius: 13px;
   background: #235b3533;
+  scroll-margin-top: 20px;
 }
+
 .success.show { display: block; }
 .success h3 { color: #80e5a0; font-size: 1rem; }
 .success p { color: #d8e9dd; font-size: .85rem; margin-top: 7px; overflow-wrap: anywhere; }
 .demo-note { color: #898e98; font-size: .72rem; margin-top: 12px; }
 
+/* DEMO OTP */
+#otpSection {
+  display: none;
+  margin: 15px 0;
+  padding: 16px;
+  background: #101114;
+  border: 1px solid #ffa50066;
+  border-radius: 12px;
+}
+
+#otpSection h3 { color: var(--orange); margin-bottom: 8px; }
+.otp-description { color: var(--muted); font-size: .85rem; margin-bottom: 12px; }
+.sample-otp { margin-bottom: 12px; }
+#demoOtp { color: var(--orange); font-weight: 800; letter-spacing: 3px; }
+
+#otpInput {
+  width: 100%;
+  padding: 12px;
+  background: #191b20;
+  color: white;
+  border: 1px solid #3a3c44;
+  border-radius: 10px;
+}
+
+#otpSection button { margin-top: 10px; }
+
 @media (max-width: 1050px) {
-  .nav-links { gap: 14px; }
-  .nav-links a { font-size: .78rem; }
+  .nav-links { gap: 12px; }
+  .nav-links a { font-size: .76rem; }
   .socials { display: none; }
   .about-grid { gap: 35px; }
   .package-grid { grid-template-columns: repeat(2, 1fr); }
@@ -408,6 +516,7 @@ section { scroll-margin-top: 80px; }
   .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
   .footer-grid > div:last-child { grid-column: 2 / 4; }
 }
+
 @media (max-width: 760px) {
   .container { width: 90%; }
   .section { padding: 70px 0; }
@@ -416,6 +525,7 @@ section { scroll-margin-top: 80px; }
   .brand-name small { font-size: .52rem; }
   .nav-right > .btn { display: none; }
   .menu-toggle { display: grid; place-items: center; font-size: 1.1rem; }
+
   .nav-links {
     position: absolute;
     top: 100%;
@@ -429,10 +539,11 @@ section { scroll-margin-top: 80px; }
     background: #111216;
     border-bottom: 1px solid var(--border);
   }
+
   .nav-links.open { display: flex; }
   .nav-links a { display: block; padding: 12px; font-size: .93rem; border-radius: 8px; }
   .nav-links a:hover { background: #25262c; }
-  .hero { min-height: 690px; min-height: min(760px, calc(100svh - 70px)); background-position: 58% center; }
+  .hero { min-height: min(760px, calc(100svh - 70px)); background-position: 58% center; }
   .hero-content { padding: 70px 0 90px; }
   .hero h1 { font-size: clamp(4rem, 14vw, 6.5rem); }
   .about-grid { grid-template-columns: 1fr; }
@@ -442,6 +553,7 @@ section { scroll-margin-top: 80px; }
   .steps-grid { grid-template-columns: 1fr; }
   .cta-panel { align-items: flex-start; flex-direction: column; }
 }
+
 @media (max-width: 560px) {
   .section { padding: 58px 0; }
   .hero { min-height: 680px; }
@@ -470,6 +582,7 @@ section { scroll-margin-top: 80px; }
   .modal { padding: 9px; }
   .modal-panel { padding: 25px 19px; }
 }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
@@ -492,6 +605,7 @@ section { scroll-margin-top: 80px; }
         <li><a href="#about">About us</a></li>
         <li><a href="#experiences">Adventures</a></li>
         <li><a href="#milestones">Milestones</a></li>
+        <li><a href="#packages">Packages</a></li>
         <li><a href="#contact">Contact us</a></li>
       </ul>
     </nav>
@@ -502,8 +616,13 @@ section { scroll-margin-top: 80px; }
         <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         <a href="https://youtube.com/" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
       </div>
-      <button class="btn btn-orange" type="button" data-book="Custom Pondicherry Trip">Book Now <i class="fa-solid fa-arrow-right"></i></button>
-      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+
+      <button class="btn btn-orange" type="button" data-book="Custom Pondicherry Trip">
+        Book Now <i class="fa-solid fa-arrow-right"></i>
+      </button>
+
+      <button class="menu-toggle" id="menuToggle" type="button"
+        aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
         <i class="fa-solid fa-bars"></i>
       </button>
     </div>
@@ -519,10 +638,16 @@ section { scroll-margin-top: 80px; }
         Explore beautiful beaches, colourful heritage streets, peaceful nature
         escapes and unforgettable coastal experiences. Your next story starts here.
       </p>
+
       <div class="hero-actions">
-        <button class="btn btn-orange" type="button" data-book="Pondicherry Discovery Tour">Book a Tour <i class="fa-solid fa-arrow-right"></i></button>
-        <a class="btn btn-outline" href="#about">Discover More <i class="fa-solid fa-compass"></i></a>
+        <button class="btn btn-orange" type="button" data-book="Pondicherry Discovery Tour">
+          Book a Tour <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <a class="btn btn-outline" href="#about">
+          Discover More <i class="fa-solid fa-compass"></i>
+        </a>
       </div>
+
       <div class="hero-features">
         <span><i class="fa-solid fa-location-dot"></i>Pondicherry, India</span>
         <span><i class="fa-solid fa-people-group"></i>Friends, couples & families</span>
@@ -534,22 +659,26 @@ section { scroll-margin-top: 80px; }
   <section class="section" id="about">
     <div class="container about-grid">
       <div class="about-image">
-        <img class="main-img" src="images/beach.png">
-        <!-- <img class="small-img" src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=600&q=85" alt="Historic architecture" loading="lazy"> -->
+        <img class="main-img" src="images/beach.png" alt="Pondicherry beach">
         <div class="image-label">One trip. Many memories.</div>
       </div>
+
       <div class="about-content">
         <span class="kicker">Who we are</span>
         <h2 class="section-title">A little escape from the everyday.</h2>
         <p>Pondicherry, also known as Puducherry, is a coastal destination famous for its promenade, beaches, French Quarter, cafés and relaxed atmosphere.</p>
         <p><strong>Pondicherry Trips</strong> is a travel website concept that helps visitors discover experiences around the city. Visitors can explore sample packages, compare trip ideas and send a booking request through a simple form.</p>
+
         <div class="about-points">
           <div class="about-point"><span class="point-icon"><i class="fa-solid fa-umbrella-beach"></i></span>Beach getaways</div>
           <div class="about-point"><span class="point-icon"><i class="fa-solid fa-landmark"></i></span>Heritage discoveries</div>
           <div class="about-point"><span class="point-icon"><i class="fa-solid fa-bicycle"></i></span>Scenic cycling</div>
           <div class="about-point"><span class="point-icon"><i class="fa-solid fa-leaf"></i></span>Nature experiences</div>
         </div>
-        <a href="#experiences" class="btn btn-orange">Explore adventures <i class="fa-solid fa-arrow-right"></i></a>
+
+        <a href="#experiences" class="btn btn-orange">
+          Explore adventures <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
@@ -570,17 +699,20 @@ section { scroll-margin-top: 80px; }
         <h2 class="section-title">Make every moment count</h2>
         <p class="section-desc">Whether you want to relax beside the sea or discover the city's history, choose an experience that matches your travel mood.</p>
       </div>
+
       <div class="experience-grid">
         <article class="experience-card">
           <span class="point-icon"><i class="fa-solid fa-water"></i></span>
           <h3>Beach & Boating</h3>
           <p>Enjoy coastal views, sea breezes and relaxing time around selected beach areas. Water activities depend on local conditions and availability.</p>
         </article>
+
         <article class="experience-card">
           <span class="point-icon"><i class="fa-solid fa-bicycle"></i></span>
           <h3>Scenic Cycling</h3>
           <p>Explore peaceful streets and coastal routes at a relaxed pace, with time to stop for photos and local cafés.</p>
         </article>
+
         <article class="experience-card">
           <span class="point-icon"><i class="fa-solid fa-compass"></i></span>
           <h3>Heritage Walks</h3>
@@ -601,11 +733,14 @@ section { scroll-margin-top: 80px; }
       <div class="package-grid">
         <article class="package-card">
           <div class="package-image">
-            <img src="images/tower.png">
+            <img src="images/tower.png" alt="Coastal sightseeing" loading="lazy">
             <span class="package-tag">Coastal favourite</span>
           </div>
           <div class="package-body">
-            <div class="package-meta"><span><i class="fa-regular fa-clock"></i> 1 day</span><span><i class="fa-solid fa-location-dot"></i> Coast</span></div>
+            <div class="package-meta">
+              <span><i class="fa-regular fa-clock"></i> 1 day</span>
+              <span><i class="fa-solid fa-location-dot"></i> Coast</span>
+            </div>
             <h3>Beach Bliss Escape</h3>
             <p>Enjoy seaside views, relaxing beach time and opportunities to capture the beauty of the coastline.</p>
             <ul class="package-features">
@@ -615,18 +750,23 @@ section { scroll-margin-top: 80px; }
             </ul>
             <div class="package-bottom">
               <div class="price">₹1,499<small>Sample price / person</small></div>
-              <button class="btn btn-orange btn-small" type="button" data-book="Beach Bliss Escape">Book now <i class="fa-solid fa-arrow-right"></i></button>
+              <button class="btn btn-orange btn-small" type="button" data-book="Beach Bliss Escape">
+                Book now <i class="fa-solid fa-arrow-right"></i>
+              </button>
             </div>
           </div>
         </article>
 
         <article class="package-card">
           <div class="package-image">
-            <img src="images/cafe.png">
-            <span class="package-tag">Culture & cafe</span>
+            <img src="images/cafe.png" alt="Pondicherry café" loading="lazy">
+            <span class="package-tag">Culture & café</span>
           </div>
           <div class="package-body">
-            <div class="package-meta"><span><i class="fa-regular fa-clock"></i> Half day</span><span><i class="fa-solid fa-location-dot"></i> White Town</span></div>
+            <div class="package-meta">
+              <span><i class="fa-regular fa-clock"></i> Half day</span>
+              <span><i class="fa-solid fa-location-dot"></i> White Town</span>
+            </div>
             <h3>Heritage & Café Trail</h3>
             <p>Walk through photogenic streets, admire heritage architecture and explore the city's café culture.</p>
             <ul class="package-features">
@@ -636,39 +776,37 @@ section { scroll-margin-top: 80px; }
             </ul>
             <div class="package-bottom">
               <div class="price">₹1,999<small>Sample price / person</small></div>
-              <button class="btn btn-orange btn-small" type="button" data-book="Heritage & Café Trail">Book now <i class="fa-solid fa-arrow-right"></i></button>
+              <button class="btn btn-orange btn-small" type="button" data-book="Heritage & Café Trail">
+                Book now <i class="fa-solid fa-arrow-right"></i>
+              </button>
             </div>
           </div>
         </article>
 
         <article class="package-card">
           <div class="package-image">
-            <img src="images/resturant.png">
-            <span class="package-tag">Nature & Resturant</span>
+            <img src="images/resturant.png" alt="Pondicherry restaurant" loading="lazy">
+            <span class="package-tag">Food & restaurants</span>
           </div>
-          
-<div class="package-body">
-  <div class="package-meta">
-    <span><i class="fa-regular fa-clock"></i> Flexible</span>
-    <span><i class="fa-solid fa-location-dot"></i> Pondicherry cafés & restaurants</span>
-  </div>
-
-  <h3>Pondicherry Food & Restaurant Tour</h3>
-<ul class="package-features">
-  <p>Discover Pondicherry's delicious food culture, from authentic South Indian meals to French-inspired cuisine</p>
-    <li><i class="fa-solid fa-check"></i> Explore local restaurants and food spots</li>
-    <li><i class="fa-solid fa-check"></i> Experience French and South Indian flavours</li>
-    <li><i class="fa-solid fa-check"></i> Discover seaside dining and cosy cafés</li>
-  </ul>
-
-  <div class="package-bottom">
-    <div class="price">₹1,499<small>Sample price / person</small></div>
-    <button class="btn btn-orange btn-small" type="button" data-book="Pondicherry Food & Restaurant Tour">
-      Book now <i class="fa-solid fa-arrow-right"></i>
-    </button>
-  </div>
-</div>
-
+          <div class="package-body">
+            <div class="package-meta">
+              <span><i class="fa-regular fa-clock"></i> Flexible</span>
+              <span><i class="fa-solid fa-location-dot"></i> Local cafés</span>
+            </div>
+            <h3>Pondicherry Food & Restaurant Tour</h3>
+            <p>Discover Pondicherry's delicious food culture, from authentic South Indian meals to French-inspired cuisine.</p>
+            <ul class="package-features">
+              <li><i class="fa-solid fa-check"></i> Explore local restaurants and food spots</li>
+              <li><i class="fa-solid fa-check"></i> Experience French and South Indian flavours</li>
+              <li><i class="fa-solid fa-check"></i> Discover seaside dining and cosy cafés</li>
+            </ul>
+            <div class="package-bottom">
+              <div class="price">₹1,499<small>Sample price / person</small></div>
+              <button class="btn btn-orange btn-small" type="button" data-book="Pondicherry Food & Restaurant Tour">
+                Book now <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
         </article>
       </div>
     </div>
@@ -681,6 +819,7 @@ section { scroll-margin-top: 80px; }
         <h2 class="section-title">How it works</h2>
         <p class="section-desc">A simple visitor journey from exploring the packages to seeing a booking confirmation.</p>
       </div>
+
       <div class="steps-grid">
         <article class="step-card">
           <h3>Choose an experience</h3>
@@ -691,8 +830,8 @@ section { scroll-margin-top: 80px; }
           <p>Enter your name, email, phone number, travel date and number of travellers.</p>
         </article>
         <article class="step-card">
-          <h3>Get confirmation</h3>
-          <p>Submit the form to see a confirmation message and reference number in this demo.</p>
+          <h3>Verify demo OTP</h3>
+          <p>Enter the sample OTP displayed on the website to view a demo booking confirmation. No SMS is sent.</p>
         </article>
       </div>
     </div>
@@ -706,7 +845,9 @@ section { scroll-margin-top: 80px; }
           <h2>Ready to explore Pondicherry?</h2>
           <p>Choose an experience, pick your date and start planning your next coastal escape.</p>
         </div>
-        <button class="btn" type="button" data-book="Custom Pondicherry Trip">Book your trip <i class="fa-solid fa-arrow-right"></i></button>
+        <button class="btn" type="button" data-book="Custom Pondicherry Trip">
+          Book your trip <i class="fa-solid fa-arrow-right"></i>
+        </button>
       </div>
     </div>
   </section>
@@ -722,6 +863,7 @@ section { scroll-margin-top: 80px; }
         </a>
         <p>A travel website concept celebrating Pondicherry's coast, culture, heritage and nature. Discover a new way to plan your next escape.</p>
       </div>
+
       <div>
         <h3>Explore</h3>
         <ul>
@@ -731,6 +873,7 @@ section { scroll-margin-top: 80px; }
           <li><a href="#packages">Packages</a></li>
         </ul>
       </div>
+
       <div>
         <h3>Experiences</h3>
         <ul>
@@ -740,6 +883,7 @@ section { scroll-margin-top: 80px; }
           <li><a href="#packages">Custom trips</a></li>
         </ul>
       </div>
+
       <div>
         <h3>Contact</h3>
         <ul>
@@ -749,6 +893,7 @@ section { scroll-margin-top: 80px; }
         </ul>
       </div>
     </div>
+
     <div class="footer-bottom">
       <p>© <span id="year"></span> Pondicherry Trips. Frontend project.</p>
       <p>Built for discovery, designed for every screen.</p>
@@ -759,7 +904,10 @@ section { scroll-margin-top: 80px; }
 <!-- BOOKING FORM -->
 <div class="modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
   <div class="modal-panel">
-    <button class="modal-close" id="modalClose" type="button" aria-label="Close booking form"><i class="fa-solid fa-xmark"></i></button>
+    <button class="modal-close" id="modalClose" type="button" aria-label="Close booking form">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
     <span class="kicker">Let's plan your escape</span>
     <h2 id="modalTitle">Book your trip</h2>
     <p>Enter your travel details below to submit your booking request.</p>
@@ -769,23 +917,28 @@ section { scroll-margin-top: 80px; }
         <label for="packageName">Selected package</label>
         <input id="packageName" name="packageName" readonly required>
       </div>
+
       <div class="form-grid">
         <div class="form-group">
           <label for="fullName">Full name *</label>
           <input id="fullName" name="fullName" placeholder="Your full name" minlength="2" autocomplete="name" required>
         </div>
+
         <div class="form-group">
           <label for="email">Email address *</label>
           <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
         </div>
+
         <div class="form-group">
           <label for="phone">Phone number *</label>
           <input id="phone" name="phone" type="tel" placeholder="10-digit number" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" autocomplete="tel" required>
         </div>
+
         <div class="form-group">
           <label for="travelDate">Travel date *</label>
           <input id="travelDate" name="travelDate" type="date" required>
         </div>
+
         <div class="form-group">
           <label for="travellers">Travellers *</label>
           <select id="travellers" name="travellers" required>
@@ -797,6 +950,7 @@ section { scroll-margin-top: 80px; }
             <option value="6 or more">6 or more</option>
           </select>
         </div>
+
         <div class="form-group">
           <label for="tripType">Trip style</label>
           <select id="tripType" name="tripType">
@@ -808,18 +962,66 @@ section { scroll-margin-top: 80px; }
           </select>
         </div>
       </div>
+
       <p class="form-error" id="formError" role="alert" aria-live="polite"></p>
-      <button class="btn btn-orange submit-btn" type="submit">Confirm booking <i class="fa-solid fa-check"></i></button>
+
+      <!-- DEMO OTP SECTION -->
+      <div id="otpSection">
+        <h3><i class="fa-solid fa-mobile-screen-button"></i> Mobile OTP Verification</h3>
+        <p class="otp-description">
+          College project demo only: no SMS has been sent to your phone.
+          Use the sample OTP displayed below.
+        </p>
+
+        <p class="sample-otp">
+          <strong>Sample OTP:</strong>
+          <span id="demoOtp"></span>
+        </p>
+
+        <label for="otpInput" style="display:block;margin-bottom:6px;font-size:.85rem;font-weight:700">
+          Enter 4-digit OTP
+        </label>
+
+        <input
+          id="otpInput"
+          type="text"
+          inputmode="numeric"
+          maxlength="4"
+          pattern="[0-9]{4}"
+          placeholder="Enter OTP"
+          autocomplete="one-time-code"
+        >
+
+        <button class="btn btn-orange submit-btn" id="verifyOtpBtn" type="button">
+          Verify OTP & Confirm Booking <i class="fa-solid fa-check"></i>
+        </button>
+
+        <button class="btn btn-outline submit-btn" id="resendOtpBtn" type="button">
+          Generate New Demo OTP
+        </button>
+      </div>
+
+      <button class="btn btn-orange submit-btn" id="sendOtpBtn" type="submit">
+        Generate  OTP <i class="fa-solid fa-mobile-screen-button"></i>
+      </button>
+
       <div class="success" id="successMessage" role="status" aria-live="polite">
         <h3><i class="fa-solid fa-circle-check"></i> Booking submitted successfully!</h3>
         <p id="successDetails"></p>
       </div>
-      <p class="demo-note">Demo only: no real reservation or payment is made. Booking details are not sent to a server or saved permanently.</p>
+
+    
+        <p class="demo-note">
+  An OTP will be generated for verification. Please enter the OTP to confirm your booking.
+</p>
+      
     </form>
   </div>
 </div>
 
+
 <script>
+// MOBILE NAVIGATION
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 const menuIcon = menuToggle.querySelector("i");
@@ -842,21 +1044,27 @@ navLinks.querySelectorAll("a").forEach(link => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Highlight the navigation link for the section currently being viewed.
+// ACTIVE NAVIGATION
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
+
       navLinks.querySelectorAll("a").forEach(link => {
-        link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+        link.classList.toggle(
+          "active",
+          link.getAttribute("href") === "#" + entry.target.id
+        );
       });
     });
   }, { rootMargin: "-35% 0px -55% 0px" });
 
-  document.querySelectorAll("main section[id]").forEach(section => observer.observe(section));
+  document.querySelectorAll("main section[id]").forEach(section => {
+    observer.observe(section);
+  });
 }
 
-// Booking modal controls.
+// BOOKING ELEMENTS
 const modal = document.getElementById("bookingModal");
 const modalClose = document.getElementById("modalClose");
 const bookingForm = document.getElementById("bookingForm");
@@ -865,46 +1073,140 @@ const travelDate = document.getElementById("travelDate");
 const formError = document.getElementById("formError");
 const successMessage = document.getElementById("successMessage");
 const successDetails = document.getElementById("successDetails");
-let previousFocus = null;
 
-// Set today's local date as the earliest allowed travel date.
+const otpSection = document.getElementById("otpSection");
+const demoOtpDisplay = document.getElementById("demoOtp");
+const otpInput = document.getElementById("otpInput");
+const sendOtpBtn = document.getElementById("sendOtpBtn");
+const verifyOtpBtn = document.getElementById("verifyOtpBtn");
+const resendOtpBtn = document.getElementById("resendOtpBtn");
+
+// LOCAL STORAGE
+const STORAGE_KEY = "pondicherryTripsBookings";
+
+let previousFocus = null;
+let generatedOtp = "";
+let otpExpiry = 0;
+let homeRedirectTimer = null;
+
+// READ ALL SAVED BOOKINGS
+function getBookings() {
+  try {
+    const savedBookings = localStorage.getItem(STORAGE_KEY);
+
+    if (!savedBookings) {
+      return [];
+    }
+
+    const bookings = JSON.parse(savedBookings);
+
+    return Array.isArray(bookings) ? bookings : [];
+  } catch (error) {
+    console.error("Error reading bookings:", error);
+    return [];
+  }
+}
+
+// SAVE THE BOOKING ARRAY
+function saveBookings(bookings) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(bookings));
+    return true;
+  } catch (error) {
+    console.error("Error saving bookings:", error);
+    return false;
+  }
+}
+
+// GET TODAY'S DATE
 function getLocalDate() {
   const date = new Date();
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
+
   return `${year}-${month}-${day}`;
 }
+
 travelDate.min = getLocalDate();
 
+// RESET OTP SECTION
+function resetOtp() {
+  generatedOtp = "";
+  otpExpiry = 0;
+
+  otpSection.style.display = "none";
+  sendOtpBtn.style.display = "block";
+
+  otpInput.value = "";
+  demoOtpDisplay.textContent = "";
+}
+
+// GENERATE DEMO OTP
+function generateDemoOtp() {
+  generatedOtp = String(
+    Math.floor(1000 + Math.random() * 9000)
+  );
+
+  // OTP expires after five minutes
+  otpExpiry = Date.now() + 5 * 60 * 1000;
+
+  demoOtpDisplay.textContent = generatedOtp;
+  otpInput.value = "";
+  formError.textContent = "";
+}
+
+// OPEN BOOKING FORM
 function openBooking(selectedPackage) {
+  if (homeRedirectTimer) {
+    clearTimeout(homeRedirectTimer);
+    homeRedirectTimer = null;
+  }
+
   previousFocus = document.activeElement;
+
+  bookingForm.reset();
+
   packageName.value = selectedPackage;
   formError.textContent = "";
   successMessage.classList.remove("show");
   successDetails.textContent = "";
+
+  resetOtp();
+
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
+
   document.getElementById("fullName").focus();
 }
 
+// CLOSE BOOKING FORM
 function closeBooking() {
   if (!modal.classList.contains("open")) return;
+
   modal.classList.remove("open");
   modal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
-  if (previousFocus) previousFocus.focus();
+
+  if (previousFocus && typeof previousFocus.focus === "function") {
+    previousFocus.focus();
+  }
 }
 
+// OPEN FORM WHEN A BOOKING BUTTON IS CLICKED
 document.querySelectorAll("[data-book]").forEach(button => {
-  button.addEventListener("click", () => openBooking(button.dataset.book));
+  button.addEventListener("click", () => {
+    openBooking(button.dataset.book);
+  });
 });
 
 modalClose.addEventListener("click", closeBooking);
 
 modal.addEventListener("click", event => {
-  if (event.target === modal) closeBooking();
+  if (event.target === modal) {
+    closeBooking();
+  }
 });
 
 document.addEventListener("keydown", event => {
@@ -914,40 +1216,155 @@ document.addEventListener("keydown", event => {
   }
 });
 
-// Validate form and display a confirmation message.
+// STEP 1: VALIDATE DETAILS AND GENERATE OTP
 bookingForm.addEventListener("submit", event => {
   event.preventDefault();
+
   formError.textContent = "";
   successMessage.classList.remove("show");
 
   if (!bookingForm.checkValidity()) {
-    formError.textContent = "Please enter valid details in all required fields.";
+    formError.textContent =
+      "Please enter valid details in all required fields.";
+
     const invalidField = bookingForm.querySelector(":invalid");
+
     if (invalidField) {
       invalidField.focus();
       invalidField.reportValidity();
     }
+
     return;
   }
 
   if (travelDate.value < getLocalDate()) {
-    formError.textContent = "Please select today or a future travel date.";
+    formError.textContent =
+      "Please select today or a future travel date.";
+
     travelDate.focus();
     return;
   }
 
+  generateDemoOtp();
+
+  otpSection.style.display = "block";
+  sendOtpBtn.style.display = "none";
+
+  otpSection.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+
+  otpInput.focus();
+});
+
+// STEP 2: VERIFY OTP AND SAVE BOOKING
+verifyOtpBtn.addEventListener("click", () => {
+  formError.textContent = "";
+
+  if (!/^[0-9]{4}$/.test(otpInput.value)) {
+    formError.textContent = "Please enter a valid 4-digit OTP.";
+    otpInput.focus();
+    return;
+  }
+
+  if (Date.now() > otpExpiry) {
+    formError.textContent =
+      "OTP expired. Generate a new demo OTP and try again.";
+    return;
+  }
+
+  if (otpInput.value !== generatedOtp) {
+    formError.textContent = "Incorrect OTP. Please try again.";
+    otpInput.focus();
+    return;
+  }
+
+  // COLLECT USER DETAILS
   const name = document.getElementById("fullName").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
   const date = travelDate.value;
   const travellers = document.getElementById("travellers").value;
   const tripType = document.getElementById("tripType").value;
-  const reference = "PT" + Date.now().toString().slice(-8);
 
+  // CREATE ONE BOOKING OBJECT
+  const booking = {
+    reference: "PT" + Date.now().toString().slice(-8),
+    packageName: packageName.value,
+    fullName: name,
+    email: email,
+    phone: phone,
+    travelDate: date,
+    travellers: travellers,
+    tripType: tripType,
+    status: "Confirmed - Demo",
+    otpVerified: true,
+    createdAt: new Date().toISOString()
+  };
+
+  // GET EXISTING BOOKINGS
+  const bookings = getBookings();
+
+  // ADD THE NEW BOOKING TO THE ARRAY
+  bookings.unshift(booking);
+
+  // SAVE THE COMPLETE ARRAY TO LOCAL STORAGE
+  const saved = saveBookings(bookings);
+
+  if (!saved) {
+    formError.textContent =
+      "Booking verified, but Local Storage could not save the data.";
+    return;
+  }
+
+  // DISPLAY CONFIRMATION
   successDetails.textContent =
-    `Thank you, ${name}! Your ${packageName.value} booking request is confirmed in this demo for ${date}. Travellers: ${travellers}. Trip style: ${tripType}. Reference: ${reference}. No real reservation has been made.`;
+    `Thank you, ${name}! Your ${booking.packageName} booking ` +
+    `request is confirmed in this demo for ${date}. ` +
+    `Travellers: ${travellers}. Trip style: ${tripType}. ` +
+    `Reference: ${booking.reference}. ` +
+    `Your booking has been saved in this browser. ` +
+    `No real reservation has been made.`;
 
   successMessage.classList.add("show");
-  successMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+  // HIDE OTP CONTROLS
+  otpSection.style.display = "none";
+  sendOtpBtn.style.display = "none";
+
+  generatedOtp = "";
+  otpExpiry = 0;
+  otpInput.value = "";
+  demoOtpDisplay.textContent = "";
+
+  successMessage.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+
+  // CLOSE FORM AFTER FOUR SECONDS
+  homeRedirectTimer = setTimeout(() => {
+    closeBooking();
+    bookingForm.reset();
+    resetOtp();
+
+    window.location.hash = "home";
+    homeRedirectTimer = null;
+  }, 4000);
+});
+
+// GENERATE A NEW OTP
+resendOtpBtn.addEventListener("click", () => {
+  generateDemoOtp();
+  otpInput.focus();
+});
+
+// ALLOW ONLY FOUR DIGITS IN OTP INPUT
+otpInput.addEventListener("input", () => {
+  otpInput.value = otpInput.value.replace(/\D/g, "").slice(0, 4);
 });
 </script>
+
 </body>
 </html>
